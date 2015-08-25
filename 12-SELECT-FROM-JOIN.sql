@@ -1,8 +1,9 @@
-SELECT Stars.name AS starname,
-(Stars.class + 7) * Stars.intensity * 1000000 AS startemp, 
-Planets.name AS planetname, 
-((Stars.class + 7) * Stars.intensity * 1000000) - (50 * Planets.orbitDistance) AS planettemp
-FROM Stars
-LEFT JOIN Planets
-ON Planets.starId = Stars.starId
-WHERE Stars.starId < 100
+SELECT stars.name AS starname,
+((stars.class+7)*intensity)*1000000 AS startemp,
+planets.name AS planetname,
+(((stars.class+7)*intensity)*1000000-(50*planets.orbitdistance)) AS planettemp
+FROM stars
+LEFT OUTER JOIN planets
+ON stars.starid=planets.starid
+WHERE stars.starid>500
+AND stars.starid<600
